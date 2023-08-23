@@ -1,3 +1,3 @@
-# 4wiqcap bot ui
+# CM bot ui
 
-streamlit powered ui for playing with the 4wiqcap assistant
+streamlit powered ui for playing with the data platform assistant
