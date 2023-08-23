@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "ucb-bot-ui"
+version = "0.1.0"
+description = "ai songwriting assistant app built with langchain, pinecone, and streamlit"
+authors = ["Charlie Heinemann <charlie.heinemann@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+langchain = "^0.0.151"
+openai = "^0.27.5"
+pinecone-client = "^2.2.1"
+streamlit = "^1.22.0"
+pexpect = "^4.8.0"
+streamlit-chat = "^0.0.2.2"
+tiktoken = "^0.3.3"
+lark = "^1.1.6"
+
+
+[tool.poetry.group.dev.dependencies]
+watchdog = "^3.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
