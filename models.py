@@ -10,7 +10,7 @@ from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.prompts import PromptTemplate
 from langchain.vectorstores import Pinecone
 from langchain.document_loaders.csv_loader import CSVLoader
-from langchain.document_loaders import PyPDFLoader
+from langchain.document_loaders import PyPDFLoader,JSONLoader
 import pinecone as pinecone
 import pandas as pd
 import random
@@ -20,10 +20,11 @@ import random
 def load_retriever():
     data = []
 
-    data.extend(CSVLoader(file_path="FiguresOfAmericanWest.csv", encoding='ISO-8859-1').load())
-    data.extend(CSVLoader(file_path="PBSDocumentaries.csv", encoding='ISO-8859-1').load())
-    data.extend(CSVLoader(file_path="Debate_topics.csv", encoding='ISO-8859-1').load())
-    data.extend(PyPDFLoader(file_path="lyrics.pdf").load_and_split())
+    #data.extend(CSVLoader(file_path="FiguresOfAmericanWest.csv", encoding='ISO-8859-1').load())
+    #data.extend(CSVLoader(file_path="PBSDocumentaries.csv", encoding='ISO-8859-1').load())
+    #data.extend(CSVLoader(file_path="Debate_topics.csv", encoding='ISO-8859-1').load())
+    #data.extend(PyPDFLoader(file_path="lyrics.pdf").load_and_split())
+    data.extend(JSONLoader(file_path="glossary.json").load_and_split())
 
     embeddings = OpenAIEmbeddings(openai_api_key=os.environ['OPENAI_API_KEY'])
     # initialize pinecone
