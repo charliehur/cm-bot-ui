@@ -15,7 +15,7 @@ if "past" not in st.session_state:
 
 
 def get_text():
-    input_text = st.text_input("Enter a topic for your song", placeholder="topic", key="input")
+    input_text = st.text_input("Enter a topic for your tweet", placeholder="topic", key="input")
     return input_text
 
 
