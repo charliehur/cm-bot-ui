@@ -21,7 +21,7 @@ def load_retriever():
     data = []
 
 
-    data.extend(CSVLoader(file_path="articles.csv", encoding='ISO-8859-1').load())
+    data.extend(CSVLoader(file_path="articles.csv", encoding='ISO-8859-1').load_and_split())
     #data.extend(PyPDFLoader(file_path="lyrics.pdf").load_and_split())
     #data.extend(JSONLoader(file_path="glossary.json",).load_and_split())
 
