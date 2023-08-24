@@ -1,11 +1,11 @@
 import streamlit as st
 from streamlit_chat import message
 
-st.set_page_config(page_title="ucb songwriting bot", page_icon="🤖")
+st.set_page_config(page_title="CM Data Platform", page_icon="🤖")
 
 from models import chain, context_search, get_topic, get_innovation, get_story_structure, analogy_chain
 
-st.header("Ugly Cousin Bot")
+st.header("CM Data Platform Bot")
 
 if "generated" not in st.session_state:
     st.session_state["generated"] = []
@@ -22,24 +22,11 @@ def get_text():
 user_input = get_text()
 
 if user_input:
-    topic = get_topic()
-    innovation = get_innovation()
-    story_structure = get_story_structure()
+
     context_docs = context_search.get_relevant_documents(user_input)
-    firstoutput = analogy_chain.run(question=user_input, input_documents="", topic=topic, innovation=innovation)
-    #output = chain.run(input_documents=context, question=user_input, topic=topic)
-    output = chain.run(question=firstoutput, input_documents=context_docs, topic=topic, first_question=user_input)
+    
+    output = chain.run(input_documents=context_docs, question=user_input)
 
-
-    #str1= "innovation: " + innovation
-    #st.write(str1)
-    #str2 = "topic: " + topic
-    #st.write(str2)
-    #str3 = "first output: " + firstoutput
-    #st.write(str3)
-    #st.write(context_docs)
-    #str5 = "initial prompt: " + user_input
-    #st.write(str5)
     
     st.session_state.past.append(user_input)
     st.session_state.generated.append(output)
