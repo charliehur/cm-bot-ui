@@ -3,7 +3,7 @@ from streamlit_chat import message
 
 st.set_page_config(page_title="CM Data Platform", page_icon="🤖")
 
-from models import chain, context_search, get_topic, get_innovation, get_story_structure, analogy_chain
+from models import chain, context_search
 
 st.header("CM Data Platform Bot")
 
