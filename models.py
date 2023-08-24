@@ -20,11 +20,10 @@ import random
 def load_retriever():
     data = []
 
-    #data.extend(CSVLoader(file_path="FiguresOfAmericanWest.csv", encoding='ISO-8859-1').load())
-    #data.extend(CSVLoader(file_path="PBSDocumentaries.csv", encoding='ISO-8859-1').load())
-    #data.extend(CSVLoader(file_path="Debate_topics.csv", encoding='ISO-8859-1').load())
+
+    data.extend(CSVLoader(file_path="articles.csv", encoding='ISO-8859-1').load())
     #data.extend(PyPDFLoader(file_path="lyrics.pdf").load_and_split())
-    data.extend(JSONLoader(file_path="glossary.json").load_and_split())
+    #data.extend(JSONLoader(file_path="glossary.json",).load_and_split())
 
     embeddings = OpenAIEmbeddings(openai_api_key=os.environ['OPENAI_API_KEY'])
     # initialize pinecone
@@ -47,8 +46,7 @@ def load_retriever():
 def load_chain():
 
     #Theme of song should be result of analogy: rocketship:{topic} = {question}:_______
-    template = """Write a response using the CM data platform, 
-    about {question}.
+    template = """As a naive cook in a Colonize Mars colony, write a tweet about {question}.
 
     Additional context: {context}"""
 
