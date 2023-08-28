@@ -22,6 +22,7 @@ def load_retriever():
 
 
     data.extend(CSVLoader(file_path="articles.csv", encoding='ISO-8859-1').load_and_split())
+    data.extend(CSVLoader(file_path="cooking_terms.csv", encoding='ISO-8859-1').load_and_split())
     #data.extend(PyPDFLoader(file_path="lyrics.pdf").load_and_split())
     #data.extend(JSONLoader(file_path="glossary.json",).load_and_split())
 
@@ -46,8 +47,7 @@ def load_retriever():
 def load_chain():
 
     #Theme of song should be result of analogy: rocketship:{topic} = {question}:_______
-    template = """As a naive cook in a Colonize Mars colony, write a tweet about {question}.
-
+    template = """As the chef in the dining hall of the Colonize Mars colony, write a tweet about {question}.
     Additional context: {context}"""
 
     prompt = PromptTemplate(
