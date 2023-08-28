@@ -49,7 +49,7 @@ def load_chain():
     #Theme of song should be result of analogy: rocketship:{topic} = {question}:_______
     template = """As the chef in the dining hall of the Colonize Mars colony, write a tweet about {question}. The response should
     use some cooking terms in {context} where the definition matches words and phrases in the response.
-    Information about Mars Colony environment is here: {context}"""
+    """
 
     prompt = PromptTemplate(
         input_variables=["question", "context"], 
