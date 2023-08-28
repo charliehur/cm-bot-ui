@@ -47,7 +47,8 @@ def load_retriever():
 def load_chain():
 
     #Theme of song should be result of analogy: rocketship:{topic} = {question}:_______
-    template = """As the chef in the dining hall of the Colonize Mars colony, write a tweet about {question}.
+    template = """As the chef in the dining hall of the Colonize Mars colony, write a tweet about {question}. The response should
+    use some cooking terms where the definition matches words and phrases in the response.
     Additional context: {context}"""
 
     prompt = PromptTemplate(
