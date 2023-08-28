@@ -37,7 +37,7 @@ def load_retriever():
     metadata_field_info = []
     #vector_store = Pinecone.from_existing_index(index_name=os.environ["PINECONE_INDEX_NAME"], embedding=OpenAIEmbeddings())
     vector_store = Pinecone.from_documents(data, embeddings, index_name=index_name)
-    llm = OpenAI(model_name="gpt-4", temperature=0.2)
+    llm = OpenAI(model_name="gpt-4", temperature=0.7)
     document_content_description = "Colonize Mars user guide and cooking terms"
 
     return SelfQueryRetriever.from_llm(
@@ -57,7 +57,7 @@ def load_chain():
         template=template
     )
 
-    llm = OpenAI(model_name="gpt-4", temperature=0.4)
+    llm = OpenAI(model_name="gpt-4", temperature=0.7)
     #llm.logit_bias = {"8237":-100, "47553": -100}
 
     return load_qa_chain(llm, verbose=True, chain_type="stuff", prompt=prompt)
