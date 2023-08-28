@@ -32,9 +32,26 @@ def load_retriever():
         api_key=os.environ['PINECONE_API_KEY'],  # find at app.pinecone.io
         environment=os.environ['PINECONE_API_ENV']  # next to api key in console
     )
+
+    metadata_field_info = [
+        AttributeInfo(
+            name="Cooking_Term",
+            description="Term used by the chef in the dining hall of the Colonize Mars colony",
+            type="string"
+        ),
+        AttributeInfo(
+            name="Part_of_Speech",
+            description="English part of speech for the cooking term (noun, verb, adjective, adverb, etc.)",
+            type="string"
+        ),
+        AttributeInfo(
+            name="Definition",
+            description="Meaning of the cooking term in the context of the Colonize Mars colony",
+            type="string"
+        )]
+    
     index_name = os.environ['PINECONE_INDEX_NAME'] # put in the name of your pinecone index here
 
-    metadata_field_info = []
     #vector_store = Pinecone.from_existing_index(index_name=os.environ["PINECONE_INDEX_NAME"], embedding=OpenAIEmbeddings())
     vector_store = Pinecone.from_documents(data, embeddings, index_name=index_name)
     llm = OpenAI(model_name="gpt-4", temperature=0.7)
@@ -48,7 +65,7 @@ def load_chain():
 
     #Theme of song should be result of analogy: rocketship:{topic} = {question}:_______
     template = """As the chef in the dining hall of the Colonize Mars colony, write a tweet about {question}. The response should
-    use cooking terms in 'Colonize Mars user guide and cooking terms' where the definition matches words and phrases in the response.
+    use cooking terms where the definition matches more common words and phrases in the response.
 
     additional context: {context}
     """
