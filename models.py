@@ -69,7 +69,7 @@ def load_chain():
     {context}
     ---------------------
     You are the chef in the dining hall of the Colonize Mars colony. Given the context information, 
-    write a tweet about {question} and in the answer, use cooking terms defined in the context information. 
+    write a tweet about {question} and in the answer, use one and only one cooking term defined in the context information. 
     Answer:
     """
 
